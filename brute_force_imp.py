@@ -1,47 +1,34 @@
-# from .sample_generator import generate_random_graph_sample 
+# from .sample_generator import generate_random_graph_sample
 # print(generate_random_graph_sample(5))
 
+import itertools
 from sample_generator import generate_random_graph_sample as generator
 
 
+def vertex_cover_brute(edges, n_vertices, k):
+    min_set = None
+    min_len = n_vertices + 1
 
-def findSubgroups(graph):
-    print("implement")
+    vertices = [vertex for vertex in range(1, n_vertices + 1)]
 
-
-
-def isVertexCover(graph):
-    print("implement")
-
-
-
-def findSize(graph):
-    print("implement")
-
-
-def findVertices(graph):
-    print("implement")
-
-
-
-
-def findMinVertexCover(n,k):
-    graph = generator(n) #edges
-    vertices = findVertices(graph)
-    subgroups = findSubgroups(graph)
-    flag = False
-    min = None
-    for S in subgroups:
-        if(findSize(S) <= k):
+    # iterate over all possible sub arrays
+    for sub_arr_len in range(1, n_vertices + 1):
+        for sub_arr in itertools.combinations(vertices, sub_arr_len):
+            # check sub array sub_arr
             flag = True
-            for (u,v) in graph:
-                if u not in vertices and v not in vertices:
+            for edge in edges:
+                if edge[0] not in sub_arr and edge[1] not in sub_arr:
                     flag = False
                     break
-            if flag == True:
-                if min == None or findSize(S) < findSize(min):
-                    min = S
-    if min != None:
-        return True, min
+            if flag:
+                if sub_arr_len < min_len:
+                    min_len = sub_arr_len
+                    min_set = sub_arr
+
+    if min_len <= k:
+        return [True, min_set]
     else:
-        return False
+        return [False, None]
+
+
+print(vertex_cover_brute(generator(5), 5, 3))
