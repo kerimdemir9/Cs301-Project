@@ -4,10 +4,10 @@ from sample_generator import generate_random_graph_sample as generator
 
 def get_adj(edges, u):
     adj = []
-    for edge in edges:
+    for edge in edges and edge[1] not in adj:
         if u == edge[0]:
             adj.append(edge[1])
-        elif u == edge[1]:
+        elif u == edge[1] and edge[0] not in adj:
             adj.append(edge[0])
     return adj
 
