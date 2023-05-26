@@ -26,6 +26,3 @@ def vertex_cover_brute(edges, n_vertices, k):
         return [True, min_set]
     else:
         return [False, None]
-
-
-print(vertex_cover_brute(generator(5), 5, 3))

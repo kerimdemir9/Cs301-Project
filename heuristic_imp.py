@@ -1,5 +1,7 @@
-import itertools
 from sample_generator import generate_random_graph_sample as generator
+import random
+import sys
+from brute_force_imp import vertex_cover_brute
 
 
 def get_adj(edges, u):
@@ -12,7 +14,7 @@ def get_adj(edges, u):
     return adj
 
 
-def vertex_cover_heuristic(edges, n_vertices):
+def vertex_cover_heuristic(edges, n_vertices, k):
 
     visited = (n_vertices+1)*[False]
 
@@ -24,8 +26,23 @@ def vertex_cover_heuristic(edges, n_vertices):
                     visited[v] = True
                     break
     cover = [v for v in range(1, n_vertices+1) if visited[v] == True]
-    return cover
+    if len(cover) <= k:
+        return [True, cover]
+    else:
+        return [False, cover]
 
 
-print(generator(5))
-print(vertex_cover_heuristic(generator(5), 5))
+true = 0
+false = 0
+for i in range(20):
+    size = random.randint(1, 20)
+    min = random.randint(1, size)
+    graph = generator(size)
+    brute = vertex_cover_brute(graph, size, min)
+    heuristic = vertex_cover_heuristic(graph, size, min)
+    if heuristic[0] == brute[0]:
+        true += 1
+    else:
+        false += 1
+
+# print((true/20)*100)
