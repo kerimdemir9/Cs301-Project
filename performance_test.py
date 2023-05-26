@@ -35,8 +35,11 @@ results = []
 for i in range(5, 21):
     results.append(exec(100000, i, random.randint(1, i)))
 
-plt.scatter(np.log(inputSize), np.log(results))
+
+xlog = np.log(inputSize)
+ylog = np.log(results)
+plt.loglog(inputSize, results)
 # plt.scatter(inputSize, results)
-plt.xlabel("inputSize")
-plt.ylabel("Running time mean")
+plt.xlabel("log(inputSize)")
+plt.ylabel("log(Running time mean)")
 plt.show()
