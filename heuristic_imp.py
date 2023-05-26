@@ -24,7 +24,7 @@ def vertex_cover_heuristic(edges, n_vertices):
                     visited[u] = True
                     visited[v] = True
                     break
-    cover = [v for v in range(n_vertices) if visited[v] == True]
+    cover = [v for v in range(1, n_vertices) if visited[v] == True]
     return cover
 
 
