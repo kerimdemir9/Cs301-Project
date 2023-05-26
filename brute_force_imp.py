@@ -1,6 +1,3 @@
-# from .sample_generator import generate_random_graph_sample
-# print(generate_random_graph_sample(5))
-
 import itertools
 from sample_generator import generate_random_graph_sample as generator
 
