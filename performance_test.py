@@ -7,18 +7,18 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-def test(size):
+def test(size, k):
     start = time.time()
     graph = generator(size)
-    vertex_cover_heuristic(graph)
+    vertex_cover_heuristic(graph, k)
     end = time.time()
     return end-start
 
 
-def exec(N, size):
+def exec(N, size, k):
     tests = []
     for i in range(N):
-        tests.append(test(size))
+        tests.append(test(size, k))
     # std = np.std(tests)
     mean = np.mean(tests)
     # sm = std/math.sqrt(N)
@@ -28,11 +28,10 @@ def exec(N, size):
 # graph for input sizes = [5,6,7,8,9,10]
 
 
-print(exec(100000, 10))
 inputSize = [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 results = []
 for i in range(5, 21):
-    results.append(exec(100000, i))
+    results.append(exec(100000, i, random.randint(1, i)))
 
 
 xlog = np.log(inputSize)

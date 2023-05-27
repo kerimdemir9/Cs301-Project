@@ -39,7 +39,7 @@ def remove(edges, u, v):
     return newEdges
 
 
-def vertex_cover_heuristic(edges):
+def vertex_cover_heuristic(edges, k):
     vertexCover = []
     UC = edges
     while len(UC) > 0:
@@ -47,4 +47,8 @@ def vertex_cover_heuristic(edges):
         vertexCover.append(CE[0])
         vertexCover.append(CE[1])
         UC = remove(UC, CE[0], CE[1])
-    return vertexCover
+
+    if len(vertexCover) <= k:
+        return [True, vertexCover]
+    else:
+        return [False, vertexCover]
