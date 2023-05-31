@@ -17,7 +17,7 @@ def qualityTest(inputSize):
         graph = generator(inputSize)
         k = random.randint(1, inputSize)
         brute = vertex_cover_brute(graph, inputSize, k)
-        heuristic = vertex_cover_heuristic(graph, k)
+        heuristic = vertex_cover_heuristic(graph, inputSize, k)
         if heuristic[0] == brute[0]:
             res["true"] += 1
         else:

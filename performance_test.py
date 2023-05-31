@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 def test(size, k):
     start = time.time()
     graph = generator(size)
-    vertex_cover_heuristic(graph, k)
+    vertex_cover_heuristic(graph, size, k)
     end = time.time()
     return end-start
 
