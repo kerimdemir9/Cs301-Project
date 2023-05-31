@@ -25,7 +25,7 @@ def exec(N, size, k):
     # t = 1.645
     return mean
 
-# graph for input sizes = [5,6,7,8,9,10]
+# graph for input sizes = [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 
 
 inputSize = [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
