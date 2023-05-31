@@ -25,7 +25,7 @@ def qualityTest(inputSize):
     return res
 
 
-# test one inputSize for 100000 times
+# test one inputSize for 10000 times
 
 inputSize = [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
 results = []
